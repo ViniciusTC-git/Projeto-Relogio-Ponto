@@ -1,0 +1,108 @@
+<style>
+* {
+box-sizing: border-box;
+}
+
+*:focus {
+outline: none;
+}
+body {
+font-family: Arial;
+background-color: #ccdcff;
+padding: 100px;
+}
+.login {
+margin: 30px auto;
+width: 300px;
+}
+.login-screen {
+background-color: #336699;
+padding: 20px;
+border-radius: 5px
+}
+
+.app-title {
+text-align: center;
+color: #ccdcff;
+}
+
+.login-form {
+text-align: center;
+}
+.control-group {
+margin-bottom: 20px;
+}
+
+input {
+text-align: center;
+background-color: #ECF0F1;
+border: 2px solid transparent;
+border-radius: 3px;
+font-size: 16px;
+font-weight: 200;
+padding: 10px 0;
+width: 250px;
+transition: border .5s;
+}
+
+input:focus {
+border: 2px solid #e6e6e6;
+box-shadow: none;
+}
+
+.btn {
+border: 2px solid transparent;
+background: #e6e6e6;
+color: #000000;
+font-size: 16px;
+line-height: 25px;
+padding: 10px 0;
+text-decoration: none;
+text-shadow: none;
+border-radius: 3px;
+box-shadow: none;
+transition: 0.25s;
+display: block;
+width: 250px;
+margin: 0 auto;
+}
+
+.btn:hover {
+background-color: #ccdcff;
+}
+
+.login-link {
+font-size: 20px;
+color: #444;
+display: block;
+margin-top: 12px;
+}
+</style>
+
+
+
+
+
+
+<form action="/login" method="POST">
+<div class="login">
+<div class="login-screen">
+<div class="app-title">
+<h1>Logar</h1>
+</div>
+<div class="login-form">
+<div class="control-group">
+
+
+  <input type="username" autocomplete="off" class="login-field" name="Nome" placeholder="Nome">
+  <label class="login-field-icon fui-user" for="login-name"></label></div>
+  <div class="control-group">
+  <input type="password" autocomplete="off" class="login-field" name="Senha" placeholder="Senha">
+  <label class="login-field-icon fui-lock" for="login-pass"></label></div>
+  
+  <input type="submit" value="Entrar" class="btn btn-primary btn-large btn-block">
+  
+</div>
+</div>
+</div>
+</form> 

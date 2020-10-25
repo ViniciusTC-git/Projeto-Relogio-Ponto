@@ -1,0 +1,85 @@
+
+<style>
+table 
+{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+   	
+   
+}
+td, th 
+{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
+
+{% if r2 %}
+
+	
+ {% if r3 %}
+ {% for r in r3 %}
+
+  <h1>Registros de {{r["DATE_FORMAT(CURRENT_DATE,'%M de %Y')"]}} </h1>
+ 
+ {% endfor %}
+ {% endif %}
+	
+
+ 	<table> 
+
+	   
+	 <tr>
+	        <th>Data</th>
+	        <th>ID</th>
+	        <th>Nome</th>
+		<th>Entrada</th>
+	        <th>Adiantado</th>
+		<th>Atrasado</th>
+		<th>Saida</th>
+		<th>Periodo</th>
+	
+        </tr>
+
+	{% for r in r2 %}
+	 <tr>
+			
+		
+	        <td> {{ r["date_format(data,'%d/%m/%Y')"] }}</td>
+		<td> {{ r["id"] }}</td>
+	        <td> {{ r["nome"] }}</td>
+		<td> {{ r["STR_TO_DATE(entrada,'%H:%i:%s')"] }}</td>
+		{% if r["adiant"] != None %}
+
+	         	<td style='color: green'> {{ r["adiant"] }}</td>
+		{% else %}
+
+			<td> {{ r["adiant"] }}</td>
+
+		{% endif %}
+	
+		{% if r["STR_TO_DATE(atraso,'%H:%i:%s')"] != None %}
+
+			<td style='color: red'> {{ r["STR_TO_DATE(atraso,'%H:%i:%s')"] }}</td>
+
+		{% else %}
+
+			<td> {{ r["STR_TO_DATE(atraso,'%H:%i:%s')"] }}</td>
+
+		{% endif %}
+
+		<td> {{ r["STR_TO_DATE(saida,'%H:%i:%s')"] }}</td>
+		<td> {{ r["timediff(STR_TO_DATE(saida,'%H:%i:%s'),STR_TO_DATE(entrada,'%H:%i:%s'))"] }}</td>
+
+
+	</tr>
+
+	{% endfor %}
+	{% endif %}
+ 	</table>

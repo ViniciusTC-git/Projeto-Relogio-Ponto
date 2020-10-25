@@ -1,0 +1,164 @@
+
+<body>
+
+
+<style>
+* {
+box-sizing: border-box;
+}
+
+*:focus {
+outline: none;
+}
+body {
+
+background-color: #ccdcff;
+padding: 20px;
+}
+
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #dddddd;
+  text-align: center;
+  padding: 1px 5px;
+  text-decoration: none;
+}
+
+
+body 
+{
+  font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+<style>
+table 
+{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+   
+}
+th 
+{	
+	background-color: #336699;
+	color: white;
+    border: 2px solid #000000;
+    text-align: left;
+    padding: 9px;
+}
+td
+{
+	background-color: #dae6f1;
+	color: black;
+    border: 2px solid #000000;
+    text-align: left;
+    padding: 2px;
+
+
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+.letra{
+font-family: sans-serif
+text-align: center;
+}
+</style>
+
+<style>
+.button 
+{
+  background-color: #336699;
+  border: none;
+  color: black;
+  border-radius: 5px;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline;
+   margin-left: 40px; 
+  font-size: 16px;
+  cursor: pointer;
+  float: left;
+}
+
+.button:hover {
+  background-color: #336699;
+  color: white;
+}
+</style>
+<script>
+function ConfirmDelete(){
+    if (confirm("Deseja excluir o usuario?"))
+    {
+
+ 
+	return true;
+	
+
+    }
+    else 
+    {
+      
+       return false;
+    }
+}  
+			    
+
+</script>
+
+
+<div class="topnav">
+<table> 
+		<tr>
+            <th><a href="/main" style="color:White;">Voltar</a></th>
+       </tr>
+</table>
+</div>
+
+
+{% if r2 %}
+
+	
+	<h1>Cadastros</h1> 
+	
+
+ 	<table> 
+
+	   
+	 <tr>
+	       
+	        <th>ID</th>
+	        <th>Nome</th>
+		<th>Tag</th>
+		<th>Alterar</th>
+	
+        </tr>
+
+	{% for r in r2 %}
+	 <tr>
+			
+		
+	     
+		<td> {{ r["ID"] }}</td>
+	        <td> {{ r["Nome"] }}</td>
+		<td> {{ r["Tag"] }}</td>
+		
+		<td><a href="atualizar/{{r["ID"]}}"><input type="submit" value="Atualizar" class ="button" style="background-color:#2eb82e" style="color:white"></a>
+		
+		  <form action = "{{url_for('remove',id=r["ID"])}}" method="POST" onsubmit="return ConfirmDelete()">
+
+		  	<input type="submit" name="_method" value="Deletar" class ="button" style="background-color:#ff1a1a" style="color:white">
+
+		</form>	  
+				
+		</td>	
+
+	</tr>
+
+	{% endfor %}
+	{% endif %}
+ 	</table>
+	</body>

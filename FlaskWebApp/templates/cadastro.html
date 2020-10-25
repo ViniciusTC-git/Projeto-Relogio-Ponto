@@ -1,0 +1,265 @@
+
+
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function(){
+
+	
+        $.ajax({
+            url: "/_processo/",
+            type: "POST",
+	    cache: false,
+  
+            success: function(resp){
+		
+		setTimeout(function(){
+			
+				
+                	$('div#result').append(resp.data);
+		
+		  }, 1000); 
+  			 
+		
+		
+		 
+            }
+		
+       
+      });
+});
+    		
+
+
+</script>
+
+</head>
+
+
+
+
+
+<style>
+/* The alert message box */
+.alert {
+  padding: 10px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 10px;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 50px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover 
+{
+  color: white;
+}
+
+table 
+{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 8%;
+   	
+   
+}
+td, th 
+{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 5px;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+</style>
+
+<body>
+
+
+<style>
+* {
+box-sizing: border-box;
+}
+
+*:focus {
+outline: none;
+}
+body {
+
+background-color: #ccdcff;
+padding: 20px;
+}
+
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #dddddd;
+  text-align: center;
+  padding: 3px 5px;
+  text-decoration: none;
+}
+
+
+
+
+
+body 
+{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+table 
+{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 8%;
+   
+}
+th 
+{	
+	background-color: #336699;
+	color: white;
+    border: 2px solid #000000;
+    text-align: left;
+    padding: 9px;
+}
+td
+{
+	background-color: #dae6f1;
+	color: black;
+    border: 2px solid #000000;
+    text-align: left;
+    padding: 9px;
+
+
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+.letra{
+font-family: sans-serif
+text-align: center;
+}
+</style>
+
+<style>
+.btn-group .button {
+  background-color: #336699;
+  border: none;
+  color: black;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  float: left;
+}
+
+.btn-group .button:hover {
+  background-color: #336699;
+  color: white;
+}
+</style>
+
+
+<script>
+// Get all elements with class="closebtn"
+var close = document.getElementsByClassName("closebtn");
+var i;
+
+// Loop through all close buttons
+for (i = 0; i < close.length; i++) {
+  // When someone clicks on a close button
+  close[i].onclick = function(){
+
+    // Get the parent of <span class="closebtn"> (<div class="alert">)
+    var div = this.parentElement;
+
+    // Set the opacity of div to 0 (transparent)
+    div.style.opacity = "0";
+
+    // Hide the div after 600ms (the same amount of milliseconds it takes to fade out)
+    setTimeout(function(){ div.style.display = "none"; }, 600);
+  }
+}
+</script>
+
+<div class="topnav">
+<table> 
+	<tr>
+            <th><a href="/main" style="color:White;">Voltar</a></th>
+       </tr>
+</table>
+</div>
+<br><font size="6"<h1>Cadastro</h1></font></br>
+
+
+<form action="/cadastro" method ="POST"><br />
+	
+  Nome:<input type="name" autocomplete="off" name="nome"><br  />
+  Tag:
+  <div id="result"></div>
+  <div class="btn-group">
+  <br><input type="submit"  class="button" value="Cadastrar"><br  />
+  </div>
+
+</form>
+
+
+
+{%if teste %}
+	
+<div class="alert">
+		  	
+	 <style>.alert{background-color: #DAA520;}</style>
+	 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>   		
+ 	 <font size = "4"> Nome ou Tag não inseridos!!!</font>			
+</div>
+
+{%endif%}
+
+
+{%if teste2%}
+
+	<div class="alert">
+
+ 
+		  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+	  	  <font size = "4"> Tag Ja cadastrada!!!</font>
+
+	 </div>
+	
+
+
+{%endif%}
+
+{%if r2%}
+
+	<div class="alert">
+			
+		  <style>.alert{background-color: #008900;}</style>
+		  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+	  	  <font size = "4"> Usuario cadastrado!!!</font>
+
+	 </div>
+	
+
+
+{%endif%}
